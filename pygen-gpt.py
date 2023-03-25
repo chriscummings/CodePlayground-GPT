@@ -26,9 +26,9 @@ prompt = f"Write python script to {args.prompt}. Provide only code, no text",
 ##
 # Execute request.
 response = openai.Completion.create(
-  engine="text-davinci-002",
+  engine="text-davinci-003",
   prompt=prompt,
-  max_tokens=60,
+  max_tokens=999,
   n=1,
   stop=None,
   temperature=0.1,
