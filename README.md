@@ -16,6 +16,10 @@ Generate scripts with gpt. Based on [https://gitlab.com/nanuchi/python-automatio
 
 ### How do I add dependencies?
 
+* Just add via pip. `pip install some-library`
+
+or
+
 * Stop your running container.
 * Add to the `requirements.txt` file.
 * Rebuild your image and go from there.
