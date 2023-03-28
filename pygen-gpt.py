@@ -17,11 +17,12 @@ openai.api_key = os.environ['OPENAI_KEY']
 ##
 # Handle parameters.
 parser = argparse.ArgumentParser()
-parser.add_argument("prompt", help="The prompt to send to the OpenAI API")
-parser.add_argument("file_name", help="Name of the file to save Python script")
+parser.add_argument("language", help="The programing language to use in solution.")
+parser.add_argument("task", help="Task to send to GPT")
+parser.add_argument("filename", help="Output file.")
 args = parser.parse_args()
 
-prompt = f"Write python script to {args.prompt}. Provide only code, no text",
+prompt = f"Write a {args.language} script to {args.task}. Provide only code, no text. Include comments.",
 
 ##
 # Execute request.
@@ -31,12 +32,12 @@ response = openai.Completion.create(
   max_tokens=999,
   n=1,
   stop=None,
-  temperature=0.1,
+  temperature=1,
 )
 
 message = response.choices[0].text.strip()
 
 ##
 # Output to file.
-with open(os.path.join("output/", args.file_name), "w") as file:
+with open(os.path.join("output/", args.filename), "w") as file:
     file.write(message)
